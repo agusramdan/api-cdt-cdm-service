@@ -1,7 +1,7 @@
 ---
 spring:
   application:
-    name: APP-BMPS-SERVICE
+    name: API-CDM-SERVICE
 
 ---
 server:
