@@ -1,0 +1,48 @@
+package com.agus.ramdan.cdm.dto;
+
+import com.agus.ramdan.cdm.domain.TrxCashDepositMachine;
+import com.agus.ramdan.cdm.domain.TrxDepositMachineDenomination;
+import org.mapstruct.*;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface TrxDepositMachineMapper {
+    TrxCashDepositMachine trxDepositMachineDtoToTrxDepositMachine(TrxDepositMachineDto trxDepositMachineDto);
+
+    TrxDepositMachineDto trxDepositMachineToTrxDepositMachineDto(TrxCashDepositMachine trxDepositMachine);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    TrxCashDepositMachine updateTrxDepositMachineFromTrxDepositMachineDto(TrxDepositMachineDto trxDepositMachineDto, @MappingTarget TrxCashDepositMachine trxDepositMachine);
+
+    TrxDepositMachineDenomination trxDepositMachineDenominationDtoToTrxDepositMachineDenomination(TrxDepositMachineDenominationDto trxDepositMachineDenominationDto);
+
+    TrxDepositMachineDenominationDto trxDepositMachineDenominationToTrxDepositMachineDenominationDto(TrxDepositMachineDenomination trxDepositMachineDenomination);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    TrxDepositMachineDenomination updateTrxDepositMachineDenominationFromTrxDepositMachineDenominationDto(TrxDepositMachineDenominationDto trxDepositMachineDenominationDto, @MappingTarget TrxDepositMachineDenomination trxDepositMachineDenomination);
+
+    TrxDepositMachineDenomination trxDepositMachineDenominationRequestToTrxDepositMachineDenomination(TrxDepositMachineDenominationRequest trxDepositMachineDenominationRequest);
+
+    TrxDepositMachineDenominationRequest trxDepositMachineDenominationToTrxDepositMachineDenominationRequest(TrxDepositMachineDenomination trxDepositMachineDenomination);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    TrxDepositMachineDenomination updateTrxDepositMachineDenominationFromTrxDepositMachineDenominationRequest(TrxDepositMachineDenominationRequest trxDepositMachineDenominationRequest, @MappingTarget TrxDepositMachineDenomination trxDepositMachineDenomination);
+
+    TrxCashDepositMachine trxDepositMachineRequestToTrxDepositMachine(TrxDepositMachineRequest trxDepositMachineRequest);
+
+    TrxDepositMachineRequest toTrxDepositMachineRequest(TrxCashDepositMachine trxDepositMachine);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    TrxCashDepositMachine updateTrxDepositMachineFromTrxDepositMachineRequest(TrxDepositMachineRequest trxDepositMachineRequest, @MappingTarget TrxCashDepositMachine trxDepositMachine);
+
+    TrxCashDepositMachine toTrxCashDepositMachine(TrxDepositMachineResponse trxDepositMachineResponse);
+
+    TrxDepositMachineResponse toTrxDepositMachineResponse(TrxCashDepositMachine trxDepositMachine);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    TrxCashDepositMachine updateTrxDepositMachineFromTrxDepositMachineResponse(TrxDepositMachineResponse trxDepositMachineResponse, @MappingTarget TrxCashDepositMachine trxDepositMachine);
+
+    TrxDepositMachineDto toTrxDepositMachineDto(TrxDepositMachineRequest request);
+    ReconciliationDto toReconciliationDto(ReconciliationRequest request);
+    TrxDepositMachineDto toTrxDepositMachineDto(ReconciliationTrxDepositMachineDto request);
+    TrxDepositMachineDenominationDto toTrxDepositMachineDenominationDto(ReconciliationTrxDepositMachineDenominationDto request);
+}

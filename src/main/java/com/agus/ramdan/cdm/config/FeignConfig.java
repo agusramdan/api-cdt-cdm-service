@@ -1,0 +1,11 @@
+package com.agus.ramdan.cdm.config;
+import com.agus.ramdan.cdm.jwt.JwtTokenPropagator;
+import feign.RequestInterceptor;
+import org.springframework.context.annotation.Bean;
+
+public class FeignConfig {
+    @Bean
+    public RequestInterceptor requestInterceptor() {
+        return new JwtTokenPropagator();
+    }
+}
