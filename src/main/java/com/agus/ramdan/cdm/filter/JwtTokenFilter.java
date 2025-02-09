@@ -1,20 +1,30 @@
-package com.agus.ramdan.cdm.utils;
+package com.agus.ramdan.cdm.filter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import io.jsonwebtoken.impl.DefaultClaims;
+import lombok.val;
+import org.springframework.context.annotation.Profile;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
-public class JwtDecoderUtils {
-
-    // ObjectMapper untuk konversi JSON ke Map
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+@Component
+@Profile("jwt")
+public class JwtTokenFilter extends OncePerRequestFilter {
 
     /**
      * Fungsi untuk mendecode token JWT tanpa verifikasi signature,
@@ -41,6 +51,7 @@ public class JwtDecoderUtils {
             String payloadJson = new String(Base64.getUrlDecoder().decode(parts[1]), StandardCharsets.UTF_8);
 
             // Parsing JSON ke dalam Map menggunakan Jackson
+            ObjectMapper objectMapper = new ObjectMapper();
             Map<String, Object> headerMap = objectMapper.readValue(headerJson, new TypeReference<Map<String, Object>>() {});
             Map<String, Object> payloadMap = objectMapper.readValue(payloadJson, new TypeReference<Map<String, Object>>() {});
 
@@ -53,4 +64,22 @@ public class JwtDecoderUtils {
         }
     }
 
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        String token = request.getHeader("Authorization");
+        val authentication_old = SecurityContextHolder.getContext().getAuthentication();
+        if (token != null && token.startsWith("Bearer ")) {
+            token = token.substring(7);
+            val map = decodeJwt(token);
+            val claims = new DefaultClaims(map.get("payload"));
+            String userId = claims.getSubject();
+            // Set Authentication ke SecurityContext
+            Object object = claims.get("Role");
+            val authentication = new UsernamePasswordAuthenticationToken(userId, token, new ArrayList<>());
+            SecurityContextHolder.getContext().setAuthentication(UsernamePasswordAuthenticationToken.authenticated(userId,token,new ArrayList<>()));
+        }
+        filterChain.doFilter(request, response);
+        SecurityContextHolder.getContext().setAuthentication(authentication_old);
+    }
 }
