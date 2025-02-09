@@ -2,7 +2,7 @@ package com.agus.ramdan.cdm.utils;
 
 
 import com.agus.ramdan.cdm.exception.ResourceNotFoundException;
-import com.agus.ramdan.cdm.service.BpmsClient;
+import com.agus.ramdan.cdm.service.CoreClient;
 //import jakarta.validation.ConstraintValidator;
 //import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import javax.validation.ConstraintValidatorContext;
 public class ValidTokenQRValidator implements ConstraintValidator<ValidTokenQR, String> {
 
     @Autowired
-    private BpmsClient client; // Service yang dipanggil
+    private CoreClient client; // Service yang dipanggil
 
     @Override
     public boolean isValid(String merchantId, ConstraintValidatorContext context) {

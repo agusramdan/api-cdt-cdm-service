@@ -1,5 +1,6 @@
 package com.agus.ramdan.cdm.dto;
 
+import com.agus.ramdan.cdm.utils.ValidTokenQR;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public class TrxDepositMachineRequest implements Serializable {
 
     @NotNull(message = "QR Code cannot be null")
     @Size(min = 20, max = 20, message = "QR Code must 20 characters.")
+    @ValidTokenQR
     private String qr_code;
 
     @AssertTrue(message = "Either machine_deposit_code or machine_deposit_sn must be provided.")

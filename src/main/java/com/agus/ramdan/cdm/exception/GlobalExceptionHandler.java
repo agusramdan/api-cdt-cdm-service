@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
     private final Tracer tracer;
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+    public ResponseEntity<Errors> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         String traceId = tracer.currentSpan() != null ? tracer.currentSpan().context().traceId() : "N/A";
         String spanId = tracer.currentSpan() != null ? tracer.currentSpan().context().spanId() : "N/A";
         val error = new Errors(new Date(), ex.getMessage(), traceId, spanId, request.getDescription(false), null);
@@ -51,23 +51,28 @@ public class GlobalExceptionHandler {
         val error = new Errors(new Date(),"Validation Error",traceId,spanId, request.getDescription(false),errors);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
-
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<?> badRequestException(BadRequestException ex, WebRequest request) {
+    public ResponseEntity<Errors> badRequestException(BadRequestException ex, WebRequest request) {
         String traceId = tracer.currentSpan() != null ? tracer.currentSpan().context().traceId() : "N/A";
         String spanId = tracer.currentSpan() != null ? tracer.currentSpan().context().spanId() : "N/A";
         log.error(String.format("trace_id=%s,span_id=%s:%s",traceId,spanId,ex.getMessage()),ex);
         val error = new Errors(new Date(), ex.getMessage(),traceId,spanId,request.getDescription(false),ex.getErrors());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
-
     @ExceptionHandler(NoContentException.class)
     public ResponseEntity<?> noContentException(NoContentException ex, WebRequest request) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    @ExceptionHandler(InternalServerErrorException.class)
+    public ResponseEntity<Errors> internalServerErrorExcpetionHandler(Exception ex, WebRequest request) {
+        String traceId = tracer.currentSpan() != null ? tracer.currentSpan().context().traceId() : "N/A";
+        String spanId = tracer.currentSpan() != null ? tracer.currentSpan().context().spanId() : "N/A";
+        log.error(String.format("trace_id=%s,span_id=%s:%s",traceId,spanId,ex.getMessage()),ex);
+        val error = new Errors(new Date(), "Internal Server Error Please Contact Helpdesk",traceId,spanId, request.getDescription(false),null);
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> globleExcpetionHandler(Exception ex, WebRequest request) {
+    public ResponseEntity<Errors> globleExcpetionHandler(Exception ex, WebRequest request) {
         String traceId = tracer.currentSpan() != null ? tracer.currentSpan().context().traceId() : "N/A";
         String spanId = tracer.currentSpan() != null ? tracer.currentSpan().context().spanId() : "N/A";
         log.error(String.format("trace_id=%s,span_id=%s:%s",traceId,spanId,ex.getMessage()),ex);

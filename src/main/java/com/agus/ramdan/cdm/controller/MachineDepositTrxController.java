@@ -6,6 +6,7 @@ import com.agus.ramdan.cdm.dto.TrxDepositMachineMapper;
 import com.agus.ramdan.cdm.dto.TrxDepositMachineRequest;
 import com.agus.ramdan.cdm.exception.BadRequestException;
 import com.agus.ramdan.cdm.exception.ResourceNotFoundException;
+import com.agus.ramdan.cdm.service.CoreClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -32,6 +33,7 @@ import javax.validation.Valid;
 public class MachineDepositTrxController {
 
     //private final TrxDepositMachineRepository repository;
+    private final CoreClient client;
     private final TrxDepositMachineMapper mapper;
 //    private final QRCodeService qrCodeService;
 
@@ -91,7 +93,6 @@ public class MachineDepositTrxController {
     })
     public ResponseEntity<TrxDepositMachineDto> postCreate(@RequestBody @Valid TrxDepositMachineRequest request) throws BadRequestException, ResourceNotFoundException {
 //        val errors = new ArrayList<ErrorValidation>();
-//        val qr_code = qrCodeService.validateCode(request.getQr_code());
 //        val option_trx = repository.findByQr_code(qr_code.getCode());
 //        if (option_trx.isPresent()){
 //            errors.add(new ErrorValidation("Deposit Transaction Duplicate QR Code","qr_code",qr_code.getCode()));
@@ -103,8 +104,8 @@ public class MachineDepositTrxController {
 //        }
 //        val data = repository.save(new_data);
 //        qrCodeService.usedCode(qr_code.getCode());
-        TrxDepositMachineDto response = mapper.toTrxDepositMachineDto(request);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        //TrxDepositMachineDto response = mapper.toTrxDepositMachineDto(request);
+        return ResponseEntity.status(HttpStatus.OK).body(client.depositTransaction(request));
     }
     @PostMapping("/reversal")
     @Operation(summary = "Reversal Deposit Transaction")

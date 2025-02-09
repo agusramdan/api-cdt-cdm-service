@@ -64,7 +64,12 @@ spring:
 
 feign:
   hystrix:
-    enabled: true
+    enabled: false
 
 keycloak:
   enabled: false
+
+feign-client:
+  api-core-service:
+    base-url: http://app_bmps_service:8080
+

@@ -5,17 +5,17 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NO_CONTENT)
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 @Getter
-public class NoContentException extends RuntimeException implements FeighResponError{
+public class InternalServerErrorException extends RuntimeException implements FeighResponError{
 
     private static final long serialVersionUID = 1L;
     private Response response;
-    public NoContentException(String message){
+    public InternalServerErrorException(String message){
         super(message);
     }
 
-    public NoContentException(String message, Response response) {
+    public InternalServerErrorException(String message, Response response) {
         super(message);
         this.response = response;
     }
