@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class QRCodeService {
     private final QRCodeMapper mapper;
+    private final CoreClient coreClient;
 
     public QRCodeResponse createCode(QRCodeRequest request) {
 //        var qrCode = mapper.fromQRCodeRequest(request);
@@ -26,14 +27,8 @@ public class QRCodeService {
 //        return repository.findByCode(code).map(mapper::toQRCodeResponse);
         return null;
     }
-    public QRCodeResponse validateCode(String code) throws ResourceNotFoundException, BadRequestException {
-//        val qrCode = repository.findByCode(code).orElseThrow(()->new ResourceNotFoundException("QR Code Not Found"));
-//        if (Boolean.TRUE.equals(qrCode.getIs_used())){
-//            throw new BadRequestException("QR Code Already used");
-//        }
-        val response = new QRCodeResponse();
-//        BeanUtils.copyNonNullProperties(qrCode,response);
-        return response;
+    public QRCodeResponse validateCode(String code) {
+        return coreClient.validateCode(code);
     }
 
     public QRCodeResponse usedCode(String code) throws ResourceNotFoundException, BadRequestException {

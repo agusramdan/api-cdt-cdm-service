@@ -61,7 +61,11 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(NoContentException.class)
     public ResponseEntity<?> noContentException(NoContentException ex, WebRequest request) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        String traceId = tracer.currentSpan() != null ? tracer.currentSpan().context().traceId() : "N/A";
+        String spanId = tracer.currentSpan() != null ? tracer.currentSpan().context().spanId() : "N/A";
+        log.error(String.format("trace_id=%s,span_id=%s:%s",traceId,spanId,ex.getMessage()),ex);
+        val error = new Errors(new Date(), ex.getMessage(),traceId,spanId,request.getDescription(false),null);
+        return new ResponseEntity<>(error,HttpStatus.NO_CONTENT);
     }
     @ExceptionHandler(InternalServerErrorException.class)
     public ResponseEntity<Errors> internalServerErrorExcpetionHandler(Exception ex, WebRequest request) {

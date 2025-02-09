@@ -35,5 +35,4 @@ public class QRCodeResponse implements Serializable {
 //    private String on_behalf_partner_name;
 
     private LocalDateTime expired_time ;
-
 }
