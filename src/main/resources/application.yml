@@ -35,6 +35,11 @@ spring:
   jmx:
     enabled: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
   main:
     lazy-initialization: true
 
