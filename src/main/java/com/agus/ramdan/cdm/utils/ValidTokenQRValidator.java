@@ -21,12 +21,12 @@ public class ValidTokenQRValidator implements ConstraintValidator<ValidTokenQR, 
     private final CoreClient client;
 
     @Override
-    public boolean isValid(String merchantId, ConstraintValidatorContext context) {
-        if (merchantId == null || merchantId.isEmpty()) {
-            return false; // Merchant ID tidak boleh kosong
+    public boolean isValid(String token, ConstraintValidatorContext context) {
+        if (token == null || token.isEmpty()) {
+            return false;
         }
         try {
-            client.validateCode(merchantId);
+            client.validateCode(token);
             return true; // Panggil service untuk validasi
         }catch (ResourceNotFoundException | BadRequestException | NoContentException e){
             return false;
