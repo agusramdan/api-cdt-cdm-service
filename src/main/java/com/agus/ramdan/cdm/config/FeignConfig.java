@@ -1,6 +1,6 @@
 package com.agus.ramdan.cdm.config;
 import com.agus.ramdan.cdm.exception.CustomFeignErrorDecoder;
-import com.agus.ramdan.cdm.interceptor.FeignClientInterceptor;
+import com.agus.ramdan.cdm.interceptor.AuthorizationRequestInterceptor;
 import feign.RequestInterceptor;
 import feign.codec.ErrorDecoder;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class FeignConfig {
     @Bean
     public RequestInterceptor requestInterceptor() {
-        return new FeignClientInterceptor();
+        return new AuthorizationRequestInterceptor();
     }
 
     @Bean
