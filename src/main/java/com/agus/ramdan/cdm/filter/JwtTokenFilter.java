@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Profile("jwt")
+@Profile("!oauth2")
 public class JwtTokenFilter extends OncePerRequestFilter {
 
     /**
