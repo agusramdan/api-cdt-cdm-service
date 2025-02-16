@@ -1,7 +1,7 @@
 ---
 spring:
   application:
-    name: API-CDM-SERVICE
+    name: API-CDT-CDM-SERVICE
 
 ---
 server:
@@ -75,6 +75,7 @@ keycloak:
   enabled: false
 
 feign-client:
-  api-core-service:
-    base-url: http://app_bmps_service:8080
-
+  core-trx:
+    base-url: http://api-cdt-core-trx-service:8080
+  core-master:
+    base-url: http://api-cdt-core-master-service:8080
