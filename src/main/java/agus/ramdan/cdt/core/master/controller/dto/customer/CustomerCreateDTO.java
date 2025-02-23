@@ -3,12 +3,11 @@ package agus.ramdan.cdt.core.master.controller.dto.customer;
 import agus.ramdan.cdt.core.master.controller.dto.AddressDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 @Data
 @Schema(name = "CustomerCreateDTO", description = "DTO for creating a customer")

@@ -5,28 +5,23 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-<!--        <version>2.4.3</version>-->
-        <version>2.7.16</version>
+        <!--        <version>2.4.3</version>-->
+        <version>3.3.8</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>2.7.16.1.20250217</version>
+    <version>3.3.8.1.20250217</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
         Cash Deposit Machine
     </description>
     <properties>
-        <java.version>11</java.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-        <org.modelmapper.version>3.2.0</org.modelmapper.version>
-        <io.springfox.version>3.0.0</io.springfox.version>
-        <boot.admin.version>2.3.1</boot.admin.version>
-        <resilience4j.version>1.6.1</resilience4j.version>
-        <spring-boot.version>2.7.16</spring-boot.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
-        <springdoc-openapi.version>1.6.12</springdoc-openapi.version>
+        <java.version>17</java.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <org.modelmapper.version>3.2.1</org.modelmapper.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -38,43 +33,24 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- spring cloud -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <!--		<dependency>-->
-        <!--			<groupId>org.springframework.cloud</groupId>-->
-        <!--			<artifactId>spring-cloud-starter-config</artifactId>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-starter-oauth2-client</artifactId>-->
         <!--		</dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-        <!--        </dependency>-->
-
         <dependency>
-  	        <groupId>org.springframework.cloud</groupId>
-  	        <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework.cloud</groupId>
-        	<artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
-
-        <!-- spring boot -->
-        <dependency>
-  	        <groupId>org.springframework.boot</groupId>
-  	        <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,49 +60,35 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-starter-webflux</artifactId>-->
+        <!--		</dependency>-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc-openapi.version}</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.3.0</version>
         </dependency>
-        <!-- library -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.data</groupId>-->
-        <!--            <artifactId>spring-data-envers</artifactId>-->
-        <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.h2database</groupId>-->
-<!--            <artifactId>h2</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.mariadb.jdbc</groupId>-->
-<!--            <artifactId>mariadb-java-client</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <!-- devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -134,14 +96,46 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-configuration-processor</artifactId>-->
+        <!--			<optional>true</optional>-->
+        <!--		</dependency>-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
+            <!--			<optional>true</optional>-->
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- common -->
         <dependency>
@@ -150,47 +144,127 @@
             <version>${org.modelmapper.version}</version>
         </dependency>
         <dependency>
-        	<groupId>org.mapstruct</groupId>
-        	<artifactId>mapstruct</artifactId>
-        	<version>${org.mapstruct.version}</version>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
         </dependency>
         <dependency>
-        	<groupId>org.mapstruct</groupId>
-        	<artifactId>mapstruct-processor</artifactId>
-        	<version>${org.mapstruct.version}</version>
-        	<scope>provided</scope>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.3</version>
+        </dependency>
         <!-- ELK integration -->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>6.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-        <!-- JJWT library untuk membuat dan memverifikasi JWT -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-<!--            <version>6.2.0.Final</version>-->
+            <version>7.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <!--			<plugin>-->
+            <!--				<groupId>io.github.deweyjose</groupId>-->
+            <!--				<artifactId>graphqlcodegen-maven-plugin</artifactId>-->
+            <!--				<version>1.61.5</version>-->
+            <!--				<executions>-->
+            <!--					<execution>-->
+            <!--						<id>dgs-codegen</id>-->
+            <!--						<goals>-->
+            <!--							<goal>generate</goal>-->
+            <!--						</goals>-->
+            <!--						<configuration>-->
+            <!--							<schemaPaths>-->
+            <!--								<param>src/main/resources/graphql-client</param>-->
+            <!--							</schemaPaths>-->
+            <!--							<packageName>agus.ramdan.cdt.core.codegen</packageName>-->
+            <!--							<addGeneratedAnnotation>true</addGeneratedAnnotation>-->
+            <!--						</configuration>-->
+            <!--					</execution>-->
+            <!--				</executions>-->
+            <!--			</plugin>-->
+            <!--			<plugin>-->
+            <!--				<groupId>org.codehaus.mojo</groupId>-->
+            <!--				<artifactId>build-helper-maven-plugin</artifactId>-->
+            <!--				<executions>-->
+            <!--					<execution>-->
+            <!--						<id>add-dgs-source</id>-->
+            <!--						<phase>generate-sources</phase>-->
+            <!--						<goals>-->
+            <!--							<goal>add-source</goal>-->
+            <!--						</goals>-->
+            <!--						<configuration>-->
+            <!--							<sources>-->
+            <!--								<source>${project.build.directory}/generated-sources</source>-->
+            <!--							</sources>-->
+            <!--						</configuration>-->
+            <!--					</execution>-->
+            <!--				</executions>-->
+            <!--			</plugin>-->
+            <!--			<plugin>-->
+            <!--				<groupId>org.hibernate.orm.tooling</groupId>-->
+            <!--				<artifactId>hibernate-enhance-maven-plugin</artifactId>-->
+            <!--				<version>${hibernate.version}</version>-->
+            <!--				<executions>-->
+            <!--					<execution>-->
+            <!--						<id>enhance</id>-->
+            <!--						<goals>-->
+            <!--							<goal>enhance</goal>-->
+            <!--						</goals>-->
+            <!--						<configuration>-->
+            <!--							<enableLazyInitialization>true</enableLazyInitialization>-->
+            <!--							<enableDirtyTracking>true</enableDirtyTracking>-->
+            <!--							<enableAssociationManagement>true</enableAssociationManagement>-->
+            <!--						</configuration>-->
+            <!--					</execution>-->
+            <!--				</executions>-->
+            <!--			</plugin>-->
+            <!--			<plugin>-->
+            <!--				<groupId>org.graalvm.buildtools</groupId>-->
+            <!--				<artifactId>native-maven-plugin</artifactId>-->
+            <!--			</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -203,15 +277,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
-            </plugin>
         </plugins>
-        <finalName>api-cdm-service</finalName>
+        <finalName>app</finalName>
     </build>
 </project>

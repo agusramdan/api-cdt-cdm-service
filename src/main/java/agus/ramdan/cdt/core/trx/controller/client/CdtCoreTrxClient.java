@@ -1,4 +1,4 @@
-package agus.ramdan.cdt.cdm.service;
+package agus.ramdan.cdt.core.trx.controller.client;
 
 import agus.ramdan.base.exception.ResourceNotFoundException;
 import agus.ramdan.cdt.cdm.domain.TrxCashDepositMachine;
@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "cdtCoreMasterClient", url = "${feign-client.api-cdm-core-service.base-url}")
-public interface CdtCoreMasterClient {
+@FeignClient(name = "cdtCoreTrxClient", url = "${feign-client.api-cdm-core-service.base-url}")
+public interface CdtCoreTrxClient {
 
     @PostMapping("api/cdm/core/deposit/get_trx")
     TrxCashDepositMachine get_trx(@RequestBody TrxCashDepositMachine request) throws ResourceNotFoundException;

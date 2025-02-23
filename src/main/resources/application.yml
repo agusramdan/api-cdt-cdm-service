@@ -44,7 +44,7 @@ spring:
     lazy-initialization: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/deposit_machine
+    url: jdbc:postgresql://db:5432/deposit_machine
     username: dm_user
     password: dm_user
 
@@ -75,7 +75,6 @@ keycloak:
   enabled: false
 
 feign-client:
-  core-trx:
-    base-url: http://api-cdt-core-trx-service:8080
-  core-master:
-    base-url: http://api-cdt-core-master-service:8080
+  api-cdm-core-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-master-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-trx-service.base-url: http://api-cdm-core-service:8080

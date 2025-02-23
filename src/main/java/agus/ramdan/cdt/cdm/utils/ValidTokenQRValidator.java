@@ -1,31 +1,29 @@
 package agus.ramdan.cdt.cdm.utils;
 
 
-import agus.ramdan.base.exception.BadRequestException;
-import agus.ramdan.base.exception.NoContentException;
-import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.service.CoreClient;
+import agus.ramdan.cdt.core.trx.controller.client.QRCodeQueryClient;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.springframework.stereotype.Component;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 @Component
 @RequiredArgsConstructor
 public class ValidTokenQRValidator implements ConstraintValidator<ValidTokenQR, String> {
 
-    private final CoreClient client;
+    private final QRCodeQueryClient client;
 
     @Override
     public boolean isValid(String token, ConstraintValidatorContext context) {
         if (token == null || token.isEmpty()) {
             return false;
         }
+        // todo: gunakan validateCode
         try {
-            client.validateCode(token);
-            return true; // Panggil service untuk validasi
-        }catch (ResourceNotFoundException | BadRequestException | NoContentException e){
+            val response = client.getByCode(token);
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }

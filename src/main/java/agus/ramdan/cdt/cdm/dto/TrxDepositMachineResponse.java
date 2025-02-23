@@ -1,12 +1,14 @@
 package agus.ramdan.cdt.cdm.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+@Builder
 @AllArgsConstructor
 @Getter
 public class TrxDepositMachineResponse implements Serializable {

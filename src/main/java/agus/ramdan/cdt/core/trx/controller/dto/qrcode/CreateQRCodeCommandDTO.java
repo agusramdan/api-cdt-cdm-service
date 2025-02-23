@@ -1,11 +1,11 @@
 package agus.ramdan.cdt.core.trx.controller.dto.qrcode;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 @Data

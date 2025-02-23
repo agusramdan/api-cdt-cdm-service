@@ -3,20 +3,20 @@ package agus.ramdan.cdt.cdm.controller;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.domain.ServiceTransaction;
 import agus.ramdan.cdt.cdm.domain.TrxCashDepositMachine;
 import agus.ramdan.cdt.cdm.dto.TrxDepositMachineDto;
 import agus.ramdan.cdt.cdm.dto.TrxDepositMachineMapper;
 import agus.ramdan.cdt.cdm.dto.TrxDepositMachineRequest;
 import agus.ramdan.cdt.cdm.dto.TrxDepositMachineResponse;
-import agus.ramdan.cdt.cdm.service.CdtCoreTrxClient;
-import agus.ramdan.cdt.cdm.service.CoreClient;
 import agus.ramdan.cdt.cdm.service.QRCodeService;
+import agus.ramdan.cdt.core.trx.controller.client.CdtCoreTrxClient;
+import agus.ramdan.cdt.core.trx.controller.client.QRCodeQueryClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 /**
  *
@@ -38,7 +36,7 @@ import javax.validation.Valid;
 public class DepositTrxController {
 
     //private final TrxDepositMachineRepository repository;
-    private final CoreClient coreClient;
+    private final QRCodeQueryClient coreClient;
     private final CdtCoreTrxClient cdmCoreClient;
     private final TrxDepositMachineMapper mapper;
     private final QRCodeService qrCodeService;
@@ -101,23 +99,23 @@ public class DepositTrxController {
 
         TrxCashDepositMachine trx_request = mapper.toTrxDepositMachine(request);
 
-        ServiceTransaction serviceTransaction = qrCodeService.createServiceTransaction(
-                ServiceTransaction.builder()
-                        .token(request.getQr_code())
-                        .signature(request.getSignature())
-                        .build()
-        );
-        trx_request.setService_transaction_id(serviceTransaction.getService_transaction_id());
-        trx_request.setService_transaction_no(serviceTransaction.getService_transaction_no());
-        trx_request.setService_product_id(serviceTransaction.getService_product_id());
-        trx_request.setService_product_code(serviceTransaction.getService_product_code());
-        trx_request.setService_product_name(serviceTransaction.getService_product_name());
-        // mapping
-        TrxCashDepositMachine trx_result =cdmCoreClient.deposit(trx_request);
-        qrCodeService.usedCode(request.getQr_code());
-
-        TrxDepositMachineResponse response = mapper.toTrxDepositMachineResponse(trx_result);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+//        ServiceTransaction serviceTransaction = qrCodeService.createServiceTransaction(
+//                ServiceTransaction.builder()
+//                        .token(request.getQr_code())
+//                        .signature(request.getSignature())
+//                        .build()
+//        );
+//        trx_request.setService_transaction_id(serviceTransaction.getService_transaction_id());
+//        trx_request.setService_transaction_no(serviceTransaction.getService_transaction_no());
+//        trx_request.setService_product_id(serviceTransaction.getService_product_id());
+//        trx_request.setService_product_code(serviceTransaction.getService_product_code());
+//        trx_request.setService_product_name(serviceTransaction.getService_product_name());
+//        // mapping
+//        TrxCashDepositMachine trx_result =cdmCoreClient.deposit(trx_request);
+//        qrCodeService.usedCode(request.getQr_code());
+//
+//        TrxDepositMachineResponse response = mapper.toTrxDepositMachineResponse(trx_result);
+        return ResponseEntity.status(HttpStatus.CREATED).body(TrxDepositMachineResponse.builder().build());
     }
 
     @PostMapping("/reversal")

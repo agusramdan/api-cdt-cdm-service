@@ -2,7 +2,7 @@ package agus.ramdan.cdt.cdm.controller;
 
 import agus.ramdan.cdt.cdm.dto.qrcode.QRCodeCDMResponse;
 import agus.ramdan.cdt.cdm.dto.qrcode.QRCodeMapper;
-import agus.ramdan.cdt.core.trx.controller.client.QRCodeClient;
+import agus.ramdan.cdt.core.trx.controller.client.QRCodeQueryClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  *
  */
-@RestController("api-cdt-cdm-qr_code-controller")
+@RestController("api-cdt-cdm-qr-code-controller")
 @RequestMapping({"/api/cdt/cdm/qr_code","/qr_code"})
 @RequiredArgsConstructor
 public class QRCodeController {
     private final QRCodeMapper mapper;
-    private final QRCodeClient client;
+    private final QRCodeQueryClient client;
     @GetMapping("validate/{code}")
     @Operation(summary = "Validate QR Code (api_validate_qr_code)")
     @ApiResponses(value = {
