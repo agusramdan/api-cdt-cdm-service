@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping({"/api/cdt/cdm/reconciliation","/reconciliation"})
+@RequestMapping({"/api/cdt/cdm/reconciliation"})
 @RequiredArgsConstructor
 @Validated
 public class ReconciliationController {
