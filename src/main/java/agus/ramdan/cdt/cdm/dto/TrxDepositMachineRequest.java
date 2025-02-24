@@ -28,7 +28,7 @@ public class TrxDepositMachineRequest implements Serializable {
         val raw = String.format("%s##%s##%s##%s##%s",
                 StringUtils.defaultString(qr_code),
                 StringUtils.defaultString(machine_deposit_code),
-                StringUtils.defaultString(machine_deposit_sn),
+//                StringUtils.defaultString(machine_deposit_sn),
                 StringUtils.defaultString(cdm_trx_no),
                 StringUtils.defaultString(trx_date),
                 StringUtils.defaultString(amount)
@@ -47,13 +47,19 @@ public class TrxDepositMachineRequest implements Serializable {
     @ValidTokenQR
     private String qr_code;
 
-    @AssertTrue(message = "Either machine_deposit_code or machine_deposit_sn must be provided.")
-    @JsonIgnore
-    public boolean isValidMachineDepositInfo() {
-        return StringUtils.isNotBlank(machine_deposit_code)||StringUtils.isNotBlank(machine_deposit_sn);
-    }
+//    @AssertTrue(message = "Either machine_deposit_code or machine_deposit_sn must be provided.")
+//    @JsonIgnore
+//    public boolean isValidMachineDepositInfo() {
+//        return StringUtils.isNotBlank(machine_deposit_code)||StringUtils.isNotBlank(machine_deposit_sn);
+//    }
+//    private String branch_id;
+    @NotNull(message = "branch_code cannot be null.")
+    private String branch_code;
+//    private String branch_name;
+
+    @NotNull(message = "machine_deposit_code cannot be null.")
     private String machine_deposit_code;
-    private String machine_deposit_sn;
+//    private String machine_deposit_sn;
     private String cdm_trx_no;
 
     @NotNull(message = "trx_date cannot be null.")

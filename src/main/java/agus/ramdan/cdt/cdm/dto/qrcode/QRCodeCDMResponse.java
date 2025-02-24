@@ -10,6 +10,8 @@ public class QRCodeCDMResponse implements Serializable {
     private String code;
     private String username;
     private String type;
+    private String branch_code;
+    private String branch_name;
 
 //    private String user_type;
 //    private String crew_code;

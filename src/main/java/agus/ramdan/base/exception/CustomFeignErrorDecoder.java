@@ -29,7 +29,7 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
         } else {
             int status_group =status/100;
             if (status_group==4){
-                return new Propagation3xxException("Need Validation",status,errors);
+                return new Propagation4xxException("Need Validation",status,errors);
             }else if(status_group==3){
                 return new Propagation3xxException("Redirection",status,errors);
             }

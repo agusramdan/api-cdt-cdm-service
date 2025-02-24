@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController("api-cdt-cdm-qr-code-controller")
-@RequestMapping({"/api/cdt/cdm/qr_code","/qr_code"})
+@RequestMapping({"/api/cdt/cdm/qr_code"})
 @RequiredArgsConstructor
 public class QRCodeController {
     private final QRCodeMapper mapper;
