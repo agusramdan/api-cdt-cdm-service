@@ -1,10 +1,10 @@
 package agus.ramdan.cdt.cdm.dto.deposit;
 
-import agus.ramdan.cdt.cdm.dto.reconciliation.ReconciliationDto;
-import agus.ramdan.cdt.cdm.dto.reconciliation.ReconciliationRequest;
 import agus.ramdan.cdt.core.trx.controller.dto.deposit.TrxDepositCreateDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.deposit.TrxDepositQueryDTO;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface TrxDepositMachineMapper {
