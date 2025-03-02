@@ -21,7 +21,7 @@ public class ValidTokenQRValidator implements ConstraintValidator<ValidTokenQR, 
         }
         // todo: gunakan validateCode
         try {
-            val response = client.getByCode(token);
+            val response = client.getByCodeDTO(token);
             return true;
         } catch (Exception e) {
             return false;

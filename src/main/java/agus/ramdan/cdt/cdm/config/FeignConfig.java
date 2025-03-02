@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableFeignClients(basePackages = {
-        "agus.ramdan.cdt.cdm.service",
-        "agus.ramdan.cdt.core.trx.controller.client"}
+        "agus.ramdan.cdt.core.trx.controller.client",
+        "agus.ramdan.cdt.core.master.controller.client",}
 )
 public class FeignConfig {
     @Bean

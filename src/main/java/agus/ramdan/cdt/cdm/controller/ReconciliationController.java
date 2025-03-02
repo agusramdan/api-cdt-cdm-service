@@ -3,9 +3,10 @@ package agus.ramdan.cdt.cdm.controller;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.dto.ReconciliationDto;
-import agus.ramdan.cdt.cdm.dto.ReconciliationRequest;
-import agus.ramdan.cdt.cdm.dto.TrxDepositMachineMapper;
+import agus.ramdan.cdt.cdm.dto.reconciliation.ReconciliationDto;
+import agus.ramdan.cdt.cdm.dto.reconciliation.ReconciliationMapper;
+import agus.ramdan.cdt.cdm.dto.reconciliation.ReconciliationRequest;
+import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -31,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReconciliationController {
 
     //private final DepositMachineStatusRepository repository;
-      private TrxDepositMachineMapper mapper;
+      private ReconciliationMapper mapper;
 //    @GetMapping("")
 //    @Operation(summary = "Get All")
 //    @ApiResponses(value = {

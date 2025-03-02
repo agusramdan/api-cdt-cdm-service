@@ -1,5 +1,6 @@
 package agus.ramdan.cdt.cdm.controller;
 
+import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.cdt.cdm.dto.qrcode.QRCodeCDMResponse;
 import agus.ramdan.cdt.cdm.dto.qrcode.QRCodeMapper;
 import agus.ramdan.cdt.core.trx.controller.client.QRCodeQueryClient;
@@ -35,8 +36,13 @@ public class QRCodeController {
                     })
     })
     public ResponseEntity<QRCodeCDMResponse> validateCode(@PathVariable("code") String code){
-        val queryDTO = client.getByCode(code);
-        val response = mapper.fromQRCodeQueryDTO(queryDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        val queryDTO = client.getByCodeDTO(code);
+        if (queryDTO.getActive()){
+            val response = mapper.fromQRCodeQueryDTO(queryDTO);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }else {
+            throw new BadRequestException("Code Not Active");
+        }
+
     }
 }

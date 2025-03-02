@@ -2,7 +2,8 @@
 spring:
   application:
     name: API-CDT-CDM-SERVICE
-
+  main:
+    allow-bean-definition-overriding: true
 ---
 server:
   port: 8080
@@ -78,3 +79,7 @@ feign-client:
   api-cdm-core-service.base-url: http://api-cdm-core-service:8080
   api-cdm-core-master-service.base-url: http://api-cdm-core-service:8080
   api-cdm-core-trx-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-master-command-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-trx-command-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-master-query-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-trx-query-service.base-url: http://api-cdm-core-service:8080

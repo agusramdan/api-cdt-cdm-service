@@ -169,6 +169,14 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>7.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>agus.ramdan.cdt</groupId>
+            <artifactId>api-cdt-core-service</artifactId>
+            <version>3.3.8.1.20250303</version>
+            <classifier>client</classifier>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -179,9 +187,13 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/agusramdan/mavenrepo</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
