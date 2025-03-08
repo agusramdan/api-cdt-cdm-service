@@ -11,7 +11,7 @@
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>3.3.8.1.20250223</version>
+    <version>3.3.8.1.20250224</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
@@ -40,10 +40,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        </dependency>-->
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.boot</groupId>-->
         <!--			<artifactId>spring-boot-starter-oauth2-client</artifactId>-->
@@ -80,10 +80,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-graphql</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-graphql</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -95,11 +95,11 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.boot</groupId>-->
         <!--			<artifactId>spring-boot-configuration-processor</artifactId>-->
@@ -120,23 +120,23 @@
             <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.11.5</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.5</version>
-            <scope>runtime</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-api</artifactId>-->
+<!--            <version>0.11.5</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-impl</artifactId>-->
+<!--            <version>0.11.5</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-jackson</artifactId>-->
+<!--            <version>0.11.5</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
         <!-- common -->
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -158,11 +158,11 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>0.10.3</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.vavr</groupId>-->
+<!--            <artifactId>vavr</artifactId>-->
+<!--            <version>0.10.3</version>-->
+<!--        </dependency>-->
         <!-- ELK integration -->
         <dependency>
             <groupId>net.logstash.logback</groupId>
@@ -173,10 +173,31 @@
         <dependency>
             <groupId>agus.ramdan.cdt</groupId>
             <artifactId>api-cdt-core-service</artifactId>
-            <version>3.3.8.1.20250303</version>
+            <version>3.3.8.1.20250308</version>
             <classifier>client</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-jpa</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-graphql</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

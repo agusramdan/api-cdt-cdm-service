@@ -35,33 +35,13 @@ spring:
     use-legacy-processing: true
   jmx:
     enabled: true
-
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9000
+          issuer-uri: http://authorization-server:9000
   main:
     lazy-initialization: true
-
-  datasource:
-    url: jdbc:postgresql://db:5432/deposit_machine
-    username: dm_user
-    password: dm_user
-
-  jpa:
-    # Hibernate ddl auto (create, create-drop, validate, update)
-    hibernate.ddl-auto: validate
-
-    properties:
-      org:
-        hibernate:
-          envers:
-            audit_table_suffix: _hist
-            #revision_field_name: rev
-            #revision_type_field_name: revtype
-            store_data_at_delete: true
-
   flyway:
     enabled: false
 

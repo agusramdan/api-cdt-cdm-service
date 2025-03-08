@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/api/cdm/transaction")
+@RequestMapping("/api/cdt/cdm/transaction")
 @RequiredArgsConstructor
 @Validated
 public class DepositTrxController {
@@ -70,5 +70,4 @@ public class DepositTrxController {
         TrxDepositMachineResponse response = mapper.toTrxDepositMachineResponse(dto);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
 }
