@@ -11,7 +11,7 @@
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>3.3.8.1.20250224</version>
+    <version>3.3.8.1.20250301</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>agus.ramdan.cdt</groupId>
             <artifactId>api-cdt-core-service</artifactId>
-            <version>3.3.8.1.20250308</version>
+            <version>3.3.8.1.20250310</version>
             <classifier>client</classifier>
             <exclusions>
                 <exclusion>
