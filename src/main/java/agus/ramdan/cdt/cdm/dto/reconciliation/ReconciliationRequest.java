@@ -28,21 +28,23 @@ public class ReconciliationRequest implements Serializable {
                 StringUtils.defaultString(machine_deposit_code),
                 StringUtils.defaultString(machine_deposit_sn),
                 StringUtils.defaultString(trx_date)
-                );
+        );
         val signature = DigestUtils.sha1Hex(raw);
         if (signature.equals(this.signature)) return true;
-        log.error("Raw: {}, Signature {}",raw,signature);
+        log.error("Raw: {}, Signature {}", raw, signature);
         return false;
     }
-    @Schema(description="sha1Hex(qr_code##machine_deposit_code##machine_deposit_sn##cdm_trx_no##trx_date##amount)")
+
+    @Schema(description = "sha1Hex(qr_code##machine_deposit_code##machine_deposit_sn##cdm_trx_no##trx_date##amount)")
     @NotNull(message = "signature cannot be null")
     private String signature;
 
     @AssertTrue(message = "Either machine_deposit_code or machine_deposit_sn must be provided.")
     @JsonIgnore
     public boolean isValidMachineDepositInfo() {
-        return StringUtils.isNotBlank(machine_deposit_code)||StringUtils.isNotBlank(machine_deposit_sn);
+        return StringUtils.isNotBlank(machine_deposit_code) || StringUtils.isNotBlank(machine_deposit_sn);
     }
+
     private String machine_deposit_code;
     private String machine_deposit_sn;
 

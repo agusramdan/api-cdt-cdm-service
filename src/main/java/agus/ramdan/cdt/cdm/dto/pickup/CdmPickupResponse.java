@@ -1,5 +1,6 @@
-package agus.ramdan.cdt.cdm.dto.deposit;
+package agus.ramdan.cdt.cdm.dto.pickup;
 
+import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineDenominationDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @Getter
-public class TrxDepositMachineResponse implements Serializable {
+public class CdmPickupResponse implements Serializable {
     private String id;
     private String qr_code;
     private String signature;

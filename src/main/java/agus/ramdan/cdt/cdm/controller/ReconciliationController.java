@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReconciliationController {
 
     //private final DepositMachineStatusRepository repository;
-      private ReconciliationMapper mapper;
+    private ReconciliationMapper mapper;
 //    @GetMapping("")
 //    @Operation(summary = "Get All")
 //    @ApiResponses(value = {
@@ -72,16 +72,16 @@ public class ReconciliationController {
 //    })
 //    public ResponseEntity<ReconciliationDto> getById(@PathVariable("id") String id)
 //            throws ResourceNotFoundException {
-////        var data = ChekUtils.getOrThrow(repository.findById(id),()-> "Data not found for this id :: " + id);
-////        return ResponseEntity.ok().body(data);
+
+    /// /        var data = ChekUtils.getOrThrow(repository.findById(id),()-> "Data not found for this id :: " + id);
+    /// /        return ResponseEntity.ok().body(data);
 //        return ResponseEntity.ok().build();
 //    }
-
     @PostMapping
     @Operation(summary = "Machine Deposit Capacity")
     @ApiResponses(value = {
-            @ApiResponse(description = "successful operation",content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = ReconciliationRequest.class)), })
+            @ApiResponse(description = "successful operation", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = ReconciliationRequest.class)),})
     })
     public ResponseEntity<ReconciliationDto> postCreate(@RequestBody @Valid ReconciliationRequest request) throws BadRequestException, ResourceNotFoundException {
         //val response = repository.save(request);

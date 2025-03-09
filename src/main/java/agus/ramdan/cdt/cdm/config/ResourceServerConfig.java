@@ -23,6 +23,8 @@ public class ResourceServerConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/swagger-ui.html","/swagger-ui/**", "/v3/api-docs/**","/v3/api-docs.yaml").permitAll()
+                        .requestMatchers("/api/cdt/cdm/query/**").hasAnyAuthority("SCOPE_cdm.read")
+                        .requestMatchers("/api/cdt/cdm/command/**").hasAnyAuthority("SCOPE_cdm.write")
                         .requestMatchers(HttpMethod.GET,"/api/cdt/cdm/**").hasAnyAuthority("SCOPE_read","SCOPE_cdm.read")
                         .requestMatchers(HttpMethod.POST,"/api/cdt/cdm/**").hasAnyAuthority("SCOPE_write","SCOPE_cdm.write")
                         .requestMatchers(HttpMethod.PUT,"/api/cdt/cdm/**").hasAnyAuthority("SCOPE_write","SCOPE_cdm.write")

@@ -1,4 +1,4 @@
-package agus.ramdan.cdt.cdm.dto.deposit;
+package agus.ramdan.cdt.cdm.dto.pickup;
 
 import agus.ramdan.cdt.cdm.utils.ValidTokenQR;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,15 +21,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Log4j2
-public class TrxDepositMachineRequest implements Serializable {
+public class CdmPickupCreateDTO implements Serializable {
     @AssertTrue(message = "invalid signature")
     @JsonIgnore
     public boolean isValidSignature() {
         val raw = String.format("%s##%s##%s##%s##%s",
                 StringUtils.defaultString(qr_code),
-                StringUtils.defaultString(machine_deposit_code),
-                StringUtils.defaultString(cdm_trx_no),
-                StringUtils.defaultString(trx_date),
+                StringUtils.defaultString(terminal_id),
+                StringUtils.defaultString(reff_id),
+                StringUtils.defaultString(pickup_date),
                 StringUtils.defaultString(amount)
         );
         val signature = DigestUtils.sha1Hex(raw);
@@ -47,19 +47,19 @@ public class TrxDepositMachineRequest implements Serializable {
     @ValidTokenQR
     private String qr_code;
 
-    @NotNull(message = "branch_code cannot be null.")
-    private String branch_code;
+    @NotNull(message = "terminal_id cannot be null.")
+    private String terminal_id;
+    private String terminal_info;
 
-    @NotNull(message = "machine_deposit_code cannot be null.")
-    private String machine_deposit_code;
+    @NotNull(message = "reff_id cannot be null.")
+    private String reff_id;
 
-    private String cdm_trx_no;
-
-    @NotNull(message = "trx_date cannot be null.")
+    @NotNull(message = "pickup_date cannot be null.")
     @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$",
-            message = "Invalid trx_date format. Expected: yyyy-MM-dd'T'HH:mm:ss")
-    private String trx_date;
+            message = "Invalid pickup_date format. Expected: yyyy-MM-dd'T'HH:mm:ss")
+    private String pickup_date;
 
+    private Integer total_pieces;
     @NotNull(message = "amount cannot be null.")
     @Positive(message = "amount must be positive value.")
     @Digits(integer = 10, fraction = 2, message = "Invalid amount format. Expected: #0.00")
@@ -68,5 +68,5 @@ public class TrxDepositMachineRequest implements Serializable {
     @Valid
     @NotNull(message = "denominations cannot be null.")
     @NotEmpty(message = "denominations cannot be empty.")
-    private List<TrxDepositMachineDenominationRequest> denominations = new ArrayList<>();
+    private List<CdmPickupDenomCreateDTO> denomination = new ArrayList<>();
 }

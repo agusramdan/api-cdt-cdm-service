@@ -10,7 +10,7 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ReconciliationMapper {
-//    TrxCashDepositMachine trxDepositMachineDtoToTrxDepositMachine(TrxDepositMachineDto trxDepositMachineDto);
+    //    TrxCashDepositMachine trxDepositMachineDtoToTrxDepositMachine(TrxDepositMachineDto trxDepositMachineDto);
 //
 //    TrxDepositMachineDto trxDepositMachineToTrxDepositMachineDto(TrxCashDepositMachine trxDepositMachine);
 //
@@ -48,14 +48,13 @@ public interface ReconciliationMapper {
 //    TrxDepositMachineDto toTrxDepositMachineDto(ReconciliationTrxDepositMachineDto request);
 //    TrxDepositMachineDenominationDto toTrxDepositMachineDenominationDto(ReconciliationTrxDepositMachineDenominationDto request);
 
-    @Mapping(target = "token",source = "qr_code")
+    @Mapping(target = "token", source = "qr_code")
     TrxDepositCreateDTO toTrxDepositCreateDTO(TrxDepositMachineRequest request);
 
-//    @Mapping(target = "qr_code",source = "token")
+    //    @Mapping(target = "qr_code",source = "token")
 //    TrxDepositMachineResponse toTrxDepositMachineResponse(TrxCashDepositMachine request);
-    @Mapping(target = "qr_code",source = "token")
+    @Mapping(target = "qr_code", source = "token")
     TrxDepositMachineResponse toTrxDepositMachineResponse(TrxDepositQueryDTO request);
-
 
 
 }

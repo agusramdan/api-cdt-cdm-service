@@ -1,4 +1,5 @@
 package agus.ramdan.cdt.cdm.config;
+
 import agus.ramdan.base.exception.CustomFeignErrorDecoder;
 import agus.ramdan.base.interceptor.AuthorizationRequestInterceptor;
 import feign.RequestInterceptor;
@@ -9,8 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableFeignClients(basePackages = {
-        "agus.ramdan.cdt.core.trx.controller.client",
-        "agus.ramdan.cdt.core.master.controller.client",}
+        "agus.ramdan.cdt.core.trx.controller.client"}
 )
 public class FeignConfig {
     @Bean

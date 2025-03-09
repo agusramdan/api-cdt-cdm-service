@@ -19,10 +19,9 @@ public class ValidTokenQRValidator implements ConstraintValidator<ValidTokenQR, 
         if (token == null || token.isEmpty()) {
             return false;
         }
-        // todo: gunakan validateCode
         try {
             val response = client.getByCodeDTO(token);
-            return true;
+            return response.getActive();
         } catch (Exception e) {
             return false;
         }

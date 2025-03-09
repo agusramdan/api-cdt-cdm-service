@@ -1,8 +1,5 @@
 package agus.ramdan.cdt.cdm.utils;
 
-//import jakarta.validation.Constraint;
-//import jakarta.validation.Payload;
-
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -14,8 +11,10 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ValidTokenQRValidator.class) // Menghubungkan dengan validator
-public @interface  ValidTokenQR {
+public @interface ValidTokenQR {
     String message() default "Invalid QR";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

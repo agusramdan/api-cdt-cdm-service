@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
-@ComponentScan(basePackages={
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@ComponentScan(basePackages = {
         "agus.ramdan.base.exception",
         "agus.ramdan.cdt.core.master.controller.client",
         "agus.ramdan.cdt.core.trx.controller.client",
