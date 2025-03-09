@@ -10,8 +10,7 @@ import org.mapstruct.ReportingPolicy;
 public interface QRCodeMapper {
     @Mapping(target = "branch_code", source = "branch.code")
     @Mapping(target = "branch_name", source = "branch.name")
-    @Mapping(target = "username", source = "vendorCrew.username", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "username", source = "user.username", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "username", expression = "java(source.getVendorCrew() != null && source.getVendorCrew().getUsername() != null ? source.getVendorCrew().getUsername() : (source.getUser() != null ? source.getUser().getUsername() : null))")
     @Mapping(target = "terminalId", source = "machine.code")
     QRCodeCDMResponse fromQRCodeQueryDTO(QRCodeQueryDTO source);
 
