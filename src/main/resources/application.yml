@@ -56,10 +56,10 @@ keycloak:
   enabled: false
 
 feign-client:
-  api-cdm-core-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-master-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-trx-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-master-command-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-trx-command-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-master-query-service.base-url: http://api-cdm-core-service:8080
-  api-cdm-core-trx-query-service.base-url: http://api-cdm-core-service:8080
+  api-cdm-core-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-master-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-trx-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-master-command-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-trx-command-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-master-query-service.base-url: http://api-cdt-core-service:8080
+  api-cdm-core-trx-query-service.base-url: http://api-cdt-core-service:8080
