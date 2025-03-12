@@ -3,7 +3,7 @@ package agus.ramdan.cdt.cdm.controller.command;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.dto.pickup.CdmPickupCreateDTO;
+import agus.ramdan.cdt.cdm.dto.pickup.CdmPickupCommandDTO;
 import agus.ramdan.cdt.cdm.dto.pickup.CdmPickupDTO;
 import agus.ramdan.cdt.cdm.dto.pickup.CmdPickupMapper;
 import agus.ramdan.cdt.core.trx.controller.client.TrxPickupCommandClient;
@@ -40,7 +40,7 @@ public class CdmPickupCommandController {
             @ApiResponse(description = "successful operation", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = CdmPickupDTO.class)),})
     })
-    public ResponseEntity<CdmPickupDTO> postCreate(@RequestBody @Valid CdmPickupCreateDTO request) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<CdmPickupDTO> postCreate(@RequestBody @Valid CdmPickupCommandDTO request) throws BadRequestException, ResourceNotFoundException {
         val result = client.create(mapper.toTrxPickupCreateDTO(request));
         val response = mapper.toCdmPickupDTO(result);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

@@ -11,7 +11,7 @@
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>3.3.8.1.20250302</version>
+    <version>3.3.8.1.20250303</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
@@ -40,14 +40,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-starter-oauth2-client</artifactId>-->
-        <!--		</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
@@ -60,10 +52,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-starter-webflux</artifactId>-->
-        <!--		</dependency>-->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-brave</artifactId>
@@ -80,10 +68,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-graphql</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -95,16 +79,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-configuration-processor</artifactId>-->
-        <!--			<optional>true</optional>-->
-        <!--		</dependency>-->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
@@ -113,30 +87,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-            <!--			<optional>true</optional>-->
         </dependency>
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt-api</artifactId>-->
-<!--            <version>0.11.5</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt-impl</artifactId>-->
-<!--            <version>0.11.5</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt-jackson</artifactId>-->
-<!--            <version>0.11.5</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
         <!-- common -->
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -158,22 +114,16 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.vavr</groupId>-->
-<!--            <artifactId>vavr</artifactId>-->
-<!--            <version>0.10.3</version>-->
-<!--        </dependency>-->
         <!-- ELK integration -->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>7.4</version>
         </dependency>
-
         <dependency>
             <groupId>agus.ramdan.cdt</groupId>
             <artifactId>api-cdt-core-service</artifactId>
-            <version>3.3.8.1.20250310</version>
+            <version>3.3.8.1.20250315</version>
             <classifier>client</classifier>
             <exclusions>
                 <exclusion>
@@ -238,66 +188,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <!--			<plugin>-->
-            <!--				<groupId>io.github.deweyjose</groupId>-->
-            <!--				<artifactId>graphqlcodegen-maven-plugin</artifactId>-->
-            <!--				<version>1.61.5</version>-->
-            <!--				<executions>-->
-            <!--					<execution>-->
-            <!--						<id>dgs-codegen</id>-->
-            <!--						<goals>-->
-            <!--							<goal>generate</goal>-->
-            <!--						</goals>-->
-            <!--						<configuration>-->
-            <!--							<schemaPaths>-->
-            <!--								<param>src/main/resources/graphql-client</param>-->
-            <!--							</schemaPaths>-->
-            <!--							<packageName>agus.ramdan.cdt.core.codegen</packageName>-->
-            <!--							<addGeneratedAnnotation>true</addGeneratedAnnotation>-->
-            <!--						</configuration>-->
-            <!--					</execution>-->
-            <!--				</executions>-->
-            <!--			</plugin>-->
-            <!--			<plugin>-->
-            <!--				<groupId>org.codehaus.mojo</groupId>-->
-            <!--				<artifactId>build-helper-maven-plugin</artifactId>-->
-            <!--				<executions>-->
-            <!--					<execution>-->
-            <!--						<id>add-dgs-source</id>-->
-            <!--						<phase>generate-sources</phase>-->
-            <!--						<goals>-->
-            <!--							<goal>add-source</goal>-->
-            <!--						</goals>-->
-            <!--						<configuration>-->
-            <!--							<sources>-->
-            <!--								<source>${project.build.directory}/generated-sources</source>-->
-            <!--							</sources>-->
-            <!--						</configuration>-->
-            <!--					</execution>-->
-            <!--				</executions>-->
-            <!--			</plugin>-->
-            <!--			<plugin>-->
-            <!--				<groupId>org.hibernate.orm.tooling</groupId>-->
-            <!--				<artifactId>hibernate-enhance-maven-plugin</artifactId>-->
-            <!--				<version>${hibernate.version}</version>-->
-            <!--				<executions>-->
-            <!--					<execution>-->
-            <!--						<id>enhance</id>-->
-            <!--						<goals>-->
-            <!--							<goal>enhance</goal>-->
-            <!--						</goals>-->
-            <!--						<configuration>-->
-            <!--							<enableLazyInitialization>true</enableLazyInitialization>-->
-            <!--							<enableDirtyTracking>true</enableDirtyTracking>-->
-            <!--							<enableAssociationManagement>true</enableAssociationManagement>-->
-            <!--						</configuration>-->
-            <!--					</execution>-->
-            <!--				</executions>-->
-            <!--			</plugin>-->
-            <!--			<plugin>-->
-            <!--				<groupId>org.graalvm.buildtools</groupId>-->
-            <!--				<artifactId>native-maven-plugin</artifactId>-->
-            <!--			</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

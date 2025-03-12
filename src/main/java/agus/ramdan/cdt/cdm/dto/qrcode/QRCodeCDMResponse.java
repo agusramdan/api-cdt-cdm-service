@@ -11,10 +11,7 @@ import java.io.Serializable;
 public class QRCodeCDMResponse implements Serializable {
     private String code;
     private String username;
-    private String type;
-    private String branch_code;
-    private String branch_name;
-    private String expired_time;
-    @JsonProperty("terminal_id")
-    private String terminalId;
+    @JsonProperty("account_type")
+    private String accountType;
+    private String branch;
 }

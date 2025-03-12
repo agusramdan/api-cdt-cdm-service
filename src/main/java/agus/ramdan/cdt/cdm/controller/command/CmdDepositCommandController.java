@@ -2,10 +2,9 @@ package agus.ramdan.cdt.cdm.controller.command;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineDto;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineMapper;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineRequest;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMachineResponse;
+import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositCommandDTO;
+import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositDTO;
+import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMapper;
 import agus.ramdan.cdt.core.trx.controller.client.TrxDepositCommandClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,41 +29,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @Log4j2
 public class CmdDepositCommandController {
-
     private final TrxDepositCommandClient client;
-    private final TrxDepositMachineMapper mapper;
-
+    private final TrxDepositMapper mapper;
     @PostMapping("")
     @Operation(summary = "Deposit")
     @ApiResponses(value = {
             @ApiResponse(description = "successful operation", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositMachineDto.class)),})
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositDTO.class)),})
     })
-    public ResponseEntity<TrxDepositMachineResponse> postCreate(@RequestBody @Valid TrxDepositMachineRequest request) throws BadRequestException, ResourceNotFoundException {
-        val result = client.create(mapper.toTrxDepositCreateDTO(request));
-        val response = mapper.toTrxDepositMachineResponse(result);
+    public ResponseEntity<TrxDepositDTO> postCreate(@RequestBody @Valid TrxDepositCommandDTO request) throws BadRequestException, ResourceNotFoundException {
+        val dto = mapper.toTrxDepositCreateDTO(request);
+        val result = client.create(dto);
+        val response = mapper.toTrxDepositDTO(result);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-//    @PostMapping("/reversal")
-//    @Operation(summary = "Reversal Deposit")
-//    @ApiResponses(value = {
-//            @ApiResponse(description = "successful operation",content = {
-//                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositMachineDto.class)), })
-//    })
-//    public ResponseEntity<TrxDepositMachineResponse> reversal(@RequestBody @Valid TrxDepositMachineRequest request) throws BadRequestException, ResourceNotFoundException {
-//        val result = client.create(mapper.toTrxDepositCreateDTO(request));
-//        val response = mapper.toTrxDepositMachineResponse(result);
-//        return ResponseEntity.status(HttpStatus.OK).body(response);
-//    }
-//    @PostMapping("/get_trx")
-//    @Operation(summary = "Get Deposit")
-//    @ApiResponses(value = {
-//            @ApiResponse(description = "successful operation",content = {
-//                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositMachineDto.class)), })
-//    })
-//    public ResponseEntity<TrxDepositMachineResponse> getCreate(@RequestBody @Valid TrxDepositMachineRequest request) throws BadRequestException, ResourceNotFoundException {
-//        val dto = client.create(mapper.toTrxDepositCreateDTO(request));
-//        TrxDepositMachineResponse response = mapper.toTrxDepositMachineResponse(dto);
-//        return ResponseEntity.status(HttpStatus.OK).body(response);
-//    }
 }

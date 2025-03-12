@@ -13,13 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 public class CdmPickupDTO implements Serializable {
     private String id;
-    private String qr_code;
-    private String branch_code;
-    private String terminal_id;
-    private String terminal_info;
-    private String reff_id;
-    private String pickup_date;
-    private Integer total_pieces;
+
+    private String branchCode;
+    private String terminalId;
+    private String terminalInfo;
+    private String reffId;
+    private String pickupDate;
+    private Integer totalPieces;
     private String amount;
     private List<CdmPickupDenomDTO> denomination = new ArrayList<>();
 }
