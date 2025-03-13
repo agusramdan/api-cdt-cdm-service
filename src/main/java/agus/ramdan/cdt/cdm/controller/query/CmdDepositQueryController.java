@@ -2,8 +2,8 @@ package agus.ramdan.cdt.cdm.controller.query;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositDTO;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMapper;
+import agus.ramdan.cdt.cdm.dto.deposit.CdmDepositDTO;
+import agus.ramdan.cdt.cdm.dto.deposit.CdmDepositMapper;
 import agus.ramdan.cdt.core.trx.controller.client.TrxDepositQueryClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,15 +29,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CmdDepositQueryController {
 
     private final TrxDepositQueryClient client;
-    private final TrxDepositMapper mapper;
+    private final CdmDepositMapper mapper;
 
     @PostMapping("")
     @Operation(summary = "Get Deposit")
     @ApiResponses(value = {
             @ApiResponse(description = "successful operation", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositDTO.class)),})
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CdmDepositDTO.class)),})
     })
-    public ResponseEntity<TrxDepositDTO> getBy(@RequestBody @Valid TrxDepositDTO request) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<CdmDepositDTO> getBy(@RequestBody @Valid CdmDepositDTO request) throws BadRequestException, ResourceNotFoundException {
         // TODO
         //val response = mapper.toTrxDepositDTO(dto);
         return ResponseEntity.status(HttpStatus.OK).body(request);

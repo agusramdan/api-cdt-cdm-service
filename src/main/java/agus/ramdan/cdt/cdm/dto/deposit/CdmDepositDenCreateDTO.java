@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrxDepositDenCommandDTO implements Serializable {
+public class CdmDepositDenCreateDTO implements Serializable {
     @NotNull(message = "denomination cannot be null.")
     @Positive(message = "denomination must be positive value.")
     @Digits(integer = 10, fraction = 2, message = "Invalid denomination format. Expected: #0.00")

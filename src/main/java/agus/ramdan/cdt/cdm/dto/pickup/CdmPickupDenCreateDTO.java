@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CdmPickupDenomCreateDTO implements Serializable {
+public class CdmPickupDenCreateDTO implements Serializable {
     @NotNull(message = "denom cannot be null.")
     @Positive(message = "denom must be positive value.")
     private Integer pieces;

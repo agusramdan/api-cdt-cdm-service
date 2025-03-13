@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CdmPickupDenomDTO implements Serializable {
+public class CdmPickupDenDTO implements Serializable {
     private String id;
     private Integer pieces;
     private Integer denom;

@@ -13,16 +13,17 @@ public interface CmdPickupMapper {
 
     @Mapping(target = "machine.code", source = "terminalId")
     @Mapping(target = "machineInfo", source = "terminalInfo")
-    @Mapping(target = "cdmTrxNo", source = "reff_id")
-    @Mapping(target = "cdmTrxDate", source = "pickup_date")
-    @Mapping(target = "totalPieces", source = "total_pieces")
+    @Mapping(target = "cdmTrxNo", source = "reffId")
+    @Mapping(target = "cdmTrxDate", source = "pickupDate")
+    @Mapping(target = "cdmTrxTime", source = "pickupTime")
+    @Mapping(target = "totalPieces", source = "totalPieces")
     @Mapping(target = "amount", source = "amount")
     @Mapping(target = "denominations", source = "denomination")
-    TrxPickupCreateDTO toTrxPickupCreateDTO(CdmPickupCommandDTO request);
+    TrxPickupCreateDTO toTrxPickupCreateDTO(CdmPickupCreateDTO request);
 
     @Mapping(target = "quantity", source = "pieces")
     @Mapping(target = "denomination", source = "denom")
-    TrxPickupDenomCreateDTO toTrxPickupDenomCreateDTO(CdmPickupDenomCreateDTO request);
+    TrxPickupDenomCreateDTO toTrxPickupDenomCreateDTO(CdmPickupDenCreateDTO request);
 
     @Mapping(target = "terminalInfo", source = "machineInfo")
     @Mapping(target = "terminalId", source = "machine.code")
@@ -33,6 +34,6 @@ public interface CmdPickupMapper {
 
     @Mapping(target = "pieces", source = "quantity")
     @Mapping(target = "denom", source = "denomination")
-    CdmPickupDenomDTO toTrxPickupDenomCreateDTO(TrxPickupDenomQueryDTO request);
+    CdmPickupDenDTO toTrxPickupDenomCreateDTO(TrxPickupDenomQueryDTO request);
 
 }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrxDepositDenDTO implements Serializable {
+public class CdmDepositDenDTO implements Serializable {
     private String id;
     private BigDecimal denomination;
     private Integer quantity;

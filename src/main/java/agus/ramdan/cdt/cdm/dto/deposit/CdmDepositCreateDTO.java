@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Log4j2
-public class TrxDepositCommandDTO implements Serializable {
+public class CdmDepositCreateDTO implements Serializable {
     @NotNull(message = "QR Code cannot be null")
     @Size(min = 20, max = 20, message = "QR Code must 20 characters.")
     @ValidTokenQR
@@ -45,5 +45,5 @@ public class TrxDepositCommandDTO implements Serializable {
     @Valid
     @NotNull(message = "denominations cannot be null.")
     @NotEmpty(message = "denominations cannot be empty.")
-    private List<TrxDepositDenCommandDTO> denominations = new ArrayList<>();
+    private List<CdmDepositDenCreateDTO> denominations = new ArrayList<>();
 }

@@ -2,9 +2,9 @@ package agus.ramdan.cdt.cdm.controller.command;
 
 import agus.ramdan.base.exception.BadRequestException;
 import agus.ramdan.base.exception.ResourceNotFoundException;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositCommandDTO;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositDTO;
-import agus.ramdan.cdt.cdm.dto.deposit.TrxDepositMapper;
+import agus.ramdan.cdt.cdm.dto.deposit.CdmDepositCreateDTO;
+import agus.ramdan.cdt.cdm.dto.deposit.CdmDepositDTO;
+import agus.ramdan.cdt.cdm.dto.deposit.CdmDepositMapper;
 import agus.ramdan.cdt.core.trx.controller.client.TrxDepositCommandClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,14 +30,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 public class CmdDepositCommandController {
     private final TrxDepositCommandClient client;
-    private final TrxDepositMapper mapper;
+    private final CdmDepositMapper mapper;
     @PostMapping("")
     @Operation(summary = "Deposit")
     @ApiResponses(value = {
             @ApiResponse(description = "successful operation", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = TrxDepositDTO.class)),})
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CdmDepositDTO.class)),})
     })
-    public ResponseEntity<TrxDepositDTO> postCreate(@RequestBody @Valid TrxDepositCommandDTO request) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<CdmDepositDTO> postCreate(@RequestBody @Valid CdmDepositCreateDTO request) throws BadRequestException, ResourceNotFoundException {
         val dto = mapper.toTrxDepositCreateDTO(request);
         val result = client.create(dto);
         val response = mapper.toTrxDepositDTO(result);

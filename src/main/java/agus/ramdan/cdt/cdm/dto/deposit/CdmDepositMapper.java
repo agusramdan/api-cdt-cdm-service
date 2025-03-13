@@ -7,11 +7,13 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-public interface TrxDepositMapper {
+public interface CdmDepositMapper {
 
     @Mapping(target = "machine.code", source = "terminalId")
-    TrxDepositCreateDTO toTrxDepositCreateDTO(TrxDepositCommandDTO request);
+    @Mapping(target = "machineInfo",source = "branch")
+    TrxDepositCreateDTO toTrxDepositCreateDTO(CdmDepositCreateDTO request);
 
     @Mapping(target = "terminalId", source = "machine.code")
-    TrxDepositDTO toTrxDepositDTO(TrxDepositQueryDTO request);
+    @Mapping(target = "branch",source = "machineInfo")
+    CdmDepositDTO toTrxDepositDTO(TrxDepositQueryDTO request);
 }

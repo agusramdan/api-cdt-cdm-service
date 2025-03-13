@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrxDepositDTO implements Serializable {
+public class CdmDepositDTO implements Serializable {
     private String id;
     private String username;
     @JsonProperty("terminal_id")
@@ -27,5 +27,5 @@ public class TrxDepositDTO implements Serializable {
     private String cdmTrxNo;
     private String amount;
     private String status;
-    private List<TrxDepositDenDTO> denominations;
+    private List<CdmDepositDenDTO> denominations;
 }
