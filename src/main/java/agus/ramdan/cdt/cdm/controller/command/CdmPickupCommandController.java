@@ -42,9 +42,9 @@ public class CdmPickupCommandController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = CdmPickupDTO.class)),})
     })
     public ResponseEntity<CdmPickupRespon> postCreate(@RequestBody @Valid CdmPickupCreateDTO request) throws BadRequestException, ResourceNotFoundException {
-        val result = client.create(mapper.toTrxPickupCreateDTO(request));
-        // mapper.toCdmPickupDTO(result);
-        val response = new CdmPickupRespon();
+        val dto = mapper.toTrxPickupCreateDTO(request);
+        val result = client.create(dto);
+        val response = mapper.toCdmPickupRespon(result);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

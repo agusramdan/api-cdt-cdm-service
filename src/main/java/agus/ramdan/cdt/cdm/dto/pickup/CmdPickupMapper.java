@@ -4,6 +4,7 @@ import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupCreateDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupDenomCreateDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupDenomQueryDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupQueryDTO;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -37,5 +38,10 @@ public interface CmdPickupMapper {
     @Mapping(target = "pieces", source = "quantity")
     @Mapping(target = "denom", source = "denomination")
     CdmPickupDenDTO toTrxPickupDenomCreateDTO(TrxPickupDenomQueryDTO request);
+
+    @Mapping(target = "responseCode", constant = "200")
+    @Mapping(target = "responseMessage", constant = "Pick Up success")
+    @Mapping(target = "data.reffId", source = "id")
+    CdmPickupRespon toCdmPickupRespon(TrxPickupQueryDTO response);
 
 }
