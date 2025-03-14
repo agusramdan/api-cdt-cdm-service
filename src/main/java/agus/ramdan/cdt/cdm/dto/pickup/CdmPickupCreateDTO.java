@@ -4,10 +4,7 @@ import agus.ramdan.base.dto.CoordinateDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -73,7 +70,7 @@ public class CdmPickupCreateDTO implements Serializable {
     @JsonProperty("reset_bag_time")
     private LocalDateTime resetBagTime;
 
-    @Positive(message = "amount must be positive value.")
+    @Positive(message = "total_amount must be positive value.")
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
 
@@ -84,19 +81,19 @@ public class CdmPickupCreateDTO implements Serializable {
     @JsonProperty("action_start_time")
     @JsonFormat(pattern="HH:mm:ss")
     private @NotNull LocalTime actionStartTime;
-    @JsonProperty("action_End_time")
+    @JsonProperty("action_end_time")
     @JsonFormat(pattern="HH:mm:ss")
     private @NotNull LocalTime actionEndTime;
 
-    @Positive(message = "amount must be positive value.")
+    @PositiveOrZero(message = "total_amount_setor must be positive or Zero value.")
     @JsonProperty("total_amount_setor")
     private BigDecimal totalAmountSetor;
 
-    @Positive(message = "amount must be positive value.")
+    @PositiveOrZero(message = "deposit_upload_success must be positive or Zero value.")
     @JsonProperty("deposit_upload_success")
     private BigDecimal depositUploadSuccess;
 
-    @Positive(message = "amount must be positive value.")
+    @PositiveOrZero(message = "deposit_upload_fail must be positive or Zero value.")
     @JsonProperty("deposit_upload_fail")
     private BigDecimal depositUploadFail;
 
