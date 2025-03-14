@@ -1,6 +1,7 @@
 package agus.ramdan.cdt.cdm.dto.deposit;
 
 import agus.ramdan.cdt.cdm.utils.ValidTokenQR;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -32,6 +33,7 @@ public class CdmDepositCreateDTO implements Serializable {
     @JsonProperty("trx_date")
     private LocalDate cdmTrxDate;
     @NotNull(message = "Invalid trx_time cannot be null.")
+    @JsonFormat(pattern="HH:mm:ss")
     @JsonProperty("trx_time")
     private LocalTime cdmTrxTime;
     private String branch;

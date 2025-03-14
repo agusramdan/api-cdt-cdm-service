@@ -23,6 +23,8 @@ public interface CmdPickupMapper {
 
     @Mapping(target = "quantity", source = "pieces")
     @Mapping(target = "denomination", source = "denom")
+    @Mapping(target = "amount", expression = "java(BigDecimal.valueOf(request.getPieces() * request.getDenom()))")
+    @Mapping(target = "type", constant = "note")
     TrxPickupDenomCreateDTO toTrxPickupDenomCreateDTO(CdmPickupDenCreateDTO request);
 
     @Mapping(target = "terminalInfo", source = "machineInfo")

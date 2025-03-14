@@ -1,6 +1,7 @@
 package agus.ramdan.cdt.cdm.dto.pickup;
 
 import agus.ramdan.base.dto.CoordinateDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Digits;
@@ -43,6 +44,7 @@ public class CdmPickupCreateDTO implements Serializable {
 
     @NotNull(message = "pickup_date cannot be null.")
     @JsonProperty("pickup_time")
+    @JsonFormat(pattern="HH:mm:ss")
     private LocalTime pickupTime;
 
     @NotNull(message = "amount cannot be null.")
@@ -61,18 +63,15 @@ public class CdmPickupCreateDTO implements Serializable {
     private String branch;
     private CoordinateDTO location;
 
-    @NotNull @NotEmpty
     @JsonProperty("new_banknote_bag_no")
     private String newBanknoteBagNo;
-
-    @NotNull @NotEmpty
     @JsonProperty("old_banknote_bag_no")
     private String oldBanknoteBagNo;
 
     @JsonProperty("otp_used")
     private String otpUsed;
     @JsonProperty("reset_bag_time")
-    private @NotNull LocalDateTime resetBagTime;
+    private LocalDateTime resetBagTime;
 
     @Positive(message = "amount must be positive value.")
     @JsonProperty("total_amount")
@@ -83,8 +82,10 @@ public class CdmPickupCreateDTO implements Serializable {
     @JsonProperty("action_date")
     private @NotNull LocalDate actionDate;
     @JsonProperty("action_start_time")
+    @JsonFormat(pattern="HH:mm:ss")
     private @NotNull LocalTime actionStartTime;
     @JsonProperty("action_End_time")
+    @JsonFormat(pattern="HH:mm:ss")
     private @NotNull LocalTime actionEndTime;
 
     @Positive(message = "amount must be positive value.")
@@ -99,8 +100,6 @@ public class CdmPickupCreateDTO implements Serializable {
     @JsonProperty("deposit_upload_fail")
     private BigDecimal depositUploadFail;
 
-    @Positive(message = "amount must be positive value.")
-    @JsonProperty("deposit_upload_fail")
     private String requestid;
 
 }

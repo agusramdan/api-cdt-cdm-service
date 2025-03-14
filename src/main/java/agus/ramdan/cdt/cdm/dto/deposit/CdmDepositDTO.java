@@ -1,5 +1,6 @@
 package agus.ramdan.cdt.cdm.dto.deposit;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class CdmDepositDTO implements Serializable {
     @JsonProperty("trx_date")
     private LocalDate cdmTrxDate;
     @JsonProperty("trx_time")
+    @JsonFormat(pattern="HH:mm:ss")
     private LocalTime cdmTrxTime;
     private String branch;
     @JsonProperty("trx_id")
