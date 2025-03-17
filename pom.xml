@@ -11,14 +11,14 @@
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>3.3.8.1.20250309</version>
+    <version>21.3.3.8.1.20250309</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
         Cash Deposit Machine
     </description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <org.modelmapper.version>3.2.1</org.modelmapper.version>
@@ -172,8 +172,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>21</source>
+                    <target>21</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
