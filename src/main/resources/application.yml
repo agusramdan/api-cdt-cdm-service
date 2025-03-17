@@ -10,6 +10,9 @@ spring:
     name: API-CDT-CDM-SERVICE
   main:
     allow-bean-definition-overriding: true
+  threads:
+    virtual:
+      enabled: true
 ---
 server:
   port: 8080
