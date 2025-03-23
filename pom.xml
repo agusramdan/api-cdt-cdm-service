@@ -11,7 +11,7 @@
     </parent>
     <groupId>agus.ramdan</groupId>
     <artifactId>api-cdt-cdm-service</artifactId>
-    <version>21.3.4.4.0.20250313</version>
+    <version>21.3.4.4.0.20250314</version>
     <name>API CDM Service</name>
     <description>
         API CDM Service
@@ -123,6 +123,10 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
         <!-- ELK integration -->
         <dependency>
