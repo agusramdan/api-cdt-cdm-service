@@ -1,3 +1,4 @@
+
 FROM openjdk:21-jdk-slim
 VOLUME /tmp
 ADD target/app.jar /app.jar
