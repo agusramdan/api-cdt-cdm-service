@@ -64,26 +64,33 @@ public class CdmPickupCreateDTO implements Serializable {
     private String newBanknoteBagNo;
     @JsonProperty("old_banknote_bag_no")
     private String oldBanknoteBagNo;
-
     @JsonProperty("otp_used")
     private String otpUsed;
+
     @JsonProperty("reset_bag_time")
+    @NotNull(message = "reset_bag_time cannot null.")
     private LocalDateTime resetBagTime;
 
     @Positive(message = "total_amount must be positive value.")
     @JsonProperty("total_amount")
+    @NotNull(message = "total_amount cannot null.")
     private BigDecimal totalAmount;
 
     @JsonProperty("last_action")
     private String lastAction;
     @JsonProperty("action_date")
-    private @NotNull LocalDate actionDate;
+    @NotNull(message = "action_date cannot null.")
+    private LocalDate actionDate;
+
     @JsonProperty("action_start_time")
     @JsonFormat(pattern="HH:mm:ss")
-    private @NotNull LocalTime actionStartTime;
+    @NotNull (message = "action_start_time cannot null.")
+    private LocalTime actionStartTime;
+
     @JsonProperty("action_end_time")
     @JsonFormat(pattern="HH:mm:ss")
-    private @NotNull LocalTime actionEndTime;
+    @NotNull (message = "action_end_time cannot null.")
+    private LocalTime actionEndTime;
 
     @PositiveOrZero(message = "total_amount_setor must be positive or Zero value.")
     @JsonProperty("total_amount_setor")
@@ -98,5 +105,4 @@ public class CdmPickupCreateDTO implements Serializable {
     private BigDecimal depositUploadFail;
 
     private String requestid;
-
 }
