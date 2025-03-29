@@ -4,7 +4,6 @@ import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupCreateDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupDenomCreateDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupDenomQueryDTO;
 import agus.ramdan.cdt.core.trx.controller.dto.pickup.TrxPickupQueryDTO;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

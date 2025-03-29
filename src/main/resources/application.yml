@@ -7,7 +7,7 @@ jvm:
 ---
 spring:
   application:
-    name: API-CDT-CDM-SERVICE
+    name: api-cdt-cdm-service
   main:
     allow-bean-definition-overriding: true
   threads:
@@ -27,6 +27,14 @@ server:
 cookie:
   maxAge: 86400
 
+logging:
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    root: WARN
+    agus.ramdan.base.exception: DEBUG
+    agus.ramdan.cdt.cdm: INFO
+
 management:
   server:
     port: 7180
@@ -39,6 +47,20 @@ management:
       show-details: ALWAYS
   security:
     enabled: false
+  metrics:
+    tags:
+      application: api-cdt-cdm-service
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  observations:
+    key-values:
+      application: api-cdt-cdm-service
 
 spring:
   config:
@@ -55,15 +77,10 @@ spring:
   flyway:
     enabled: false
 
-  zipkin:
-    enabled: false
-
 feign:
   hystrix:
     enabled: false
 
-keycloak:
-  enabled: false
 
 feign-client:
   api-cdt-core-service.base-url: http://api-cdt-core-service:8080
