@@ -22,7 +22,7 @@ public class ResourceServerConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/swagger-ui.html","/swagger-ui/**", "/v3/api-docs/**","/v3/api-docs.yaml").permitAll()
+                        .requestMatchers("/actuator/**","/swagger-ui.html","/swagger-ui/**", "/v3/api-docs/**","/v3/api-docs.yaml").permitAll()
 
                         .requestMatchers("/api/cdt/cdm/query/**").hasAnyAuthority("SCOPE_cdm.read")
                         .requestMatchers("/api/cdt/cdm/command/**").hasAnyAuthority("SCOPE_cdm.write")
