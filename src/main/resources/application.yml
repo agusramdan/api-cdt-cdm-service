@@ -19,6 +19,7 @@ server:
   port: 8080
   error:
     include-stacktrace: never
+  shutdown: graceful
   servlet:
     session:
       cookie:
@@ -42,6 +43,11 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoint:
     health:
       show-details: ALWAYS
@@ -81,7 +87,6 @@ feign:
   hystrix:
     enabled: false
 
-
 feign-client:
   api-cdt-core-service.base-url: http://api-cdt-core-service:8080
   api-cdt-core-master-service.base-url: http://api-cdt-core-service:8080
@@ -90,10 +95,3 @@ feign-client:
   api-cdt-core-trx-command-service.base-url: http://api-cdt-core-service:8080
   api-cdt-core-master-query-service.base-url: http://api-cdt-core-service:8080
   api-cdt-core-trx-query-service.base-url: http://api-cdt-core-service:8080
-
-
-
-
-
-
-
