@@ -25,7 +25,7 @@ public class QRCodeController {
     private final QRCodeMapper mapper;
     private final QRCodeQueryClient client;
 
-    @GetMapping("validate/{code}")
+    @GetMapping("/validate/{code}")
     @Operation(summary = "Validate QR Code (api_validate_qr_code)")
     @ApiResponses(value = {
             @ApiResponse(description = "successful operation",
