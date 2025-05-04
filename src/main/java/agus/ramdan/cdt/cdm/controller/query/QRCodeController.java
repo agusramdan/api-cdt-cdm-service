@@ -34,7 +34,7 @@ public class QRCodeController {
                     })
     })
     public ResponseEntity<QRCodeCDMResponse> validateCode(@PathVariable("code") String code) {
-        val queryDTO = client.getByCodeDTO(code);
+        val queryDTO = client.validateByCode(code);
         if (queryDTO.getActive()) {
             val response = mapper.fromQRCodeQueryDTO(queryDTO);
             return ResponseEntity.status(HttpStatus.OK).body(response);
